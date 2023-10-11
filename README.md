@@ -8,6 +8,8 @@ Implementation has been prepared in three versions:
 - hybrid, for which thw quantum part is run remotely, on IBMQ, but the classical one is run locally
 - remote, for which both parts of the code are run on IBMQ
 
+The parts of code related with Scheduling Workflow problem were inspired by [the code by Joanna Sieńko and Julia Plewa](https://github.com/JoannaSienko/workflow-scheduling-problem-qiskit).
+
 ## Limitations for various versions
 
 ### Local
