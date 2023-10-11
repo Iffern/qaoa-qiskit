@@ -124,7 +124,7 @@ def solve_and_store_result(qaoa):
             mapping[x] = float(sample.fval)
 
 
-backend = IBMProvider(token=os.getenv("IBM_QUANTUM_TOKEN")).get_backend('ibm_nairobi')
+backend = IBMProvider(token=os.getenv("IBM_QUANTUM_TOKEN")).get_backend('')
 noise_model = NoiseModel.from_backend(backend)
 backend_options = {"noise_model": noise_model}
 qaoa_mes = QAOA(Sampler(backend_options=backend_options), optimizer=optimizer, reps=args.reps,

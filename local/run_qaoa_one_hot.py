@@ -20,7 +20,7 @@ from RecursiveMinimumEigenOptimizer import RecursiveMinimumEigenOptimizer
 from NumpyMinimumEigensolver import NumPyMinimumEigensolver
 from CustomInitialState import CustomInitialState
 from polynomial_program import PolynomialProgram
-from workflows import get_cost_model, get_deadline_model, get_machine_usage_model, is_correct, get_stats_for_result, get_indices
+from workflows_one_hot_encoding import get_cost_model, get_deadline_model, get_machine_usage_model, is_correct, get_stats_for_result, get_indices
 from qiskit.opflow import SummedOp, Y, I, X
 
 
@@ -197,7 +197,7 @@ def solve_and_store_result(qaoa):
         energies.append(min(history['energy']))
 
 
-backend = IBMProvider(token=os.getenv("IBM_QUANTUM_TOKEN")).get_backend('ibm_nairobi')
+backend = IBMProvider(token=os.getenv("IBM_QUANTUM_TOKEN")).get_backend('')
 noise_model = NoiseModel.from_backend(backend)
 backend_options = {"noise_model": noise_model}
 qaoa_mes = QAOA(Sampler(backend_options=backend_options), optimizer=optimizer, reps=args.reps,

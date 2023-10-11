@@ -1,0 +1,106 @@
+{
+  "name": "qaoa",
+  "description": "Qiskit Runtime QAOA program",
+  "max_execution_time": 18000,
+  "spec": {
+    "parameters": {
+      "$schema": "https://json-schema.org/draft/2019-09/schema",
+      "properties": {
+        "operator": {
+          "description": "The cost Hamiltonian, consisting of Pauli I and Z operators, whose smallest eigenvalue we're trying to find. The type must be a PauliSumOp.",
+          "type": "object"
+        },
+        "offset": {
+          "description": "The cost Hamiltonian, consisting of Pauli I and Z operators, whose smallest eigenvalue we're trying to find. The type must be a PauliSumOp.",
+          "type": "float"
+        },
+        "optimizer": {
+          "description": "The classical optimizer used to update the parameters in each iteration. Per default, SPSA with automatic calibration of the learning rate is used. The type must be a qiskit.algorithms.optimizers.Optimizer.",
+          "type": "object"
+        },
+        "pre_solver": {
+          "description": "Optimizer to solve the relaxed version of the problem. Available options are GoemansWilliamsonOptimizer.",
+          "type": "string"
+        },
+        "initial_point": {
+          "description": "Initial parameters of the ansatz. Can be an array or the string ``'random'`` to choose random initial parameters. The type must be numpy.ndarray or str.",
+          "type": [
+            "array",
+            "string"
+          ]
+        },
+        "reps": {
+          "description": "The number of QAOA repetitions, i.e. the QAOA depth typically labeled p. This value defaults to 1.",
+          "type": "integer",
+          "default": 1
+        },
+        "shots": {
+          "description": "The integer number of shots used for each circuit evaluation. Defaults to 1024.",
+          "type": "integer",
+          "default": 1024
+        },
+        "alpha": {
+          "description": "The fraction of top measurement samples to be used for the expectation value (CVaR expectation). Defaults to 1, i.e. using all samples to construct the expectation value.",
+          "type": "number"
+        },
+        "optimization_level": {
+          "description": "The optimization level to run if the swap strategies are not used. This value is 1 by default. This is an integer.",
+          "type": "integer",
+          "default": 1
+        },
+        "measurement_error_mitigation": {
+          "description": "Whether to apply measurement error mitigation in form of a completed measurement fitter to the measurements. Defaults to False.",
+          "type": "boolean",
+          "default": false
+        },
+        "warm_start": {
+          "description": "Should the Warm Start version of the algorithm be run.",
+          "type": "boolean",
+          "default": false
+        },
+        "recursive": {
+          "description": "Should the Recursive version of the algorithm be run.",
+          "type": "boolean",
+          "default": false
+        },
+        "min_num_vars": {
+          "description": "The minimum number of variables to apply the recursive scheme. If this threshold is reached, the min_num_vars_optimizer is used.",
+          "type": "number",
+          "default": 1
+        }
+      },
+      "required": [
+        "operator"
+      ]
+    },
+    "return_values": {
+      "$schema": "https://json-schema.org/draft/2019-09/schema",
+      "properties": {
+        "x": {
+          "description": "The variable values found in the optimization, or possibly None in case of failure.",
+          "type": "object"
+        },
+        "fval": {
+          "description": "The objective function value.",
+          "type": "float"
+        },
+        "raw_results": {
+          "description": "The original results object from the optimization algorithm.",
+          "type": "object"
+        },
+        "samples": {
+          "description": "The solution samples.",
+          "type": "array"
+        },
+        "optimizer_history": {
+          "description": "A dictionary containing information about the optimization process: the value objective function, parameters, and a timestamp. The type is Dict[str, Any].",
+          "type": "object"
+        },
+        "inputs": {
+          "description": "A dictionary of the serialized input keyword arguments. The type is Dict[str, Any].",
+          "type": "object"
+        }
+      }
+    }
+  }
+}

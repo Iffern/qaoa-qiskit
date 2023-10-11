@@ -110,7 +110,7 @@ def solve_and_store_result(qaoa, beta):
         }
 
 
-backend = IBMProvider(token=os.getenv("IBM_QUANTUM_TOKEN")).get_backend('ibm_nairobi')
+backend = IBMProvider(token=os.getenv("IBM_QUANTUM_TOKEN")).get_backend('')
 noise_model = NoiseModel.from_backend(backend)
 backend_options = {"noise_model": noise_model}
 
